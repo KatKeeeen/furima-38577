@@ -62,25 +62,25 @@ RSpec.describe Item, type: :model do
       end
 
       it 'stateが空(1)では保存できない' do
-        @item.state_id = nil
+        @item.state_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("State can't be blank")
       end
 
       it 'shopping_chargeが空(1)では保存できない' do
-        @item.shopping_charge_id = nil
+        @item.shopping_charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shopping charge can't be blank")
       end
 
       it 'prefectureが空(1)では保存できない' do
-        @item.prefecture_id = nil
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it 'delivery_timeが空(1)では保存できない' do
-        @item.delivery_time_id = nil
+        @item.delivery_time_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery time can't be blank")
       end

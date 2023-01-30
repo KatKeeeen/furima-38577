@@ -18,6 +18,5 @@ module Furima38577
   end
 end
 
-Rails.application.config.i18n.default_locale = :ja
-#念の為
+
 Faker::Config.locale = :ja
