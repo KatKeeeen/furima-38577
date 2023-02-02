@@ -12,15 +12,15 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: "is out of setting range" }
+    validates :price,
+              numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                              message: 'is out of setting range' }
     validates :category_id,        numericality: { other_than: 1, message: "can't be blank" }
     validates :state_id,           numericality: { other_than: 1, message: "can't be blank" }
     validates :shopping_charge_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :prefecture_id,      numericality: { other_than: 1, message: "can't be blank" }
     validates :delivery_time_id,   numericality: { other_than: 1, message: "can't be blank" }
-    
   end
 
-  validates :price,numericality: { only_integer: true, message: "is invalid. Input half-width numbers" }
-
+  validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width numbers' }
 end

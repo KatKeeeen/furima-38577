@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    
+
     context '商品出品ができない場合' do
       it 'imageが空では保存できない' do
         @item.image = nil
@@ -40,19 +40,19 @@ RSpec.describe Item, type: :model do
       it 'priceが半角数字でないと保存できない' do
         @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width numbers")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width numbers')
       end
 
       it 'priceが300未満では保存できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'priceが9,999,999を超えると保存できない' do
-        @item.price = 10,000,000
+        @item.price = 10, 0o00, 0o00
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'categoryが空(1)では保存できない' do
@@ -84,7 +84,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery time can't be blank")
       end
-
 
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
