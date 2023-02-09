@@ -1,4 +1,5 @@
 class Destination < ApplicationRecord
-  belongs_to  :oder
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to  :order
   belongs_to  :prefecture
 end
