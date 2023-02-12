@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :item_setting
+  before_action :move_to_index
 
   def index
-    @item = Item.find_by(params[:id])
     @order_destination = OrderDestination.new
   end
 
   def create
-    @item = Item.find_by(params[:id])
     @order_destination = OrderDestination.new(order_params)
     if @order_destination.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -23,6 +23,16 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def item_setting
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_index
+    if current_user.id == @item.user.id || Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
+  end
 
   def order_params
     params.require(:order_destination).permit(:post_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
