@@ -132,31 +132,32 @@
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item.id) do %>
-            <div class='item-img-content'>
-              <%= image_tag item.image, class: "item-img" %>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
 
-              <%if Order.exists?(item_id: item.id) %>
-                <div class='sold-out'>
-                  <span>Sold Out!!</span>
-                </div>
-              <%end %>
+                <%if Order.exists?(item_id: item.id) %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <%end %>
 
-            </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
-                <%= item.name %>
-              </h3>
-              <div class='item-price'>
-                <span><%= item.price.to_s(:delimited) %>円<br><%= item.shopping_charge.name %></span>
-                <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price.to_s(:delimited) %>円<br><%= item.shopping_charge.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </li>
         <% end %>
-      </li>
+      
 
       <% else %>
         <li class='list'>
