@@ -1,4 +1,5 @@
 production:
+
   <<: *default
   adapter: mysql2
   database: furima_38577_production
