@@ -77,4 +77,4 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-gem 'psych', '~> 3.1'
+gem 'psych', '~> 4.1'
